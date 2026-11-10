@@ -1,0 +1,24 @@
+[general]
+name=planEa2qgis
+qgisMinimumVersion=3.22
+description=NCZ imar planlarını QGIS'e aktarır; alanları e-Plan (Mekânsal Planlar) resmi gösterimiyle — tarama dokusu, renk ve sembolleriyle — çizer.
+about=planEa ailesinin QGIS eklentisi. Saf Python NCZ okuyucu: harici program ya da Netcad kurulumu gerekmez. Alanlar yalnız kapalı ve dolu işaretli çoklu çizgilerden kurulur; iç alanlar dış alandan boşaltılır, kopya alanlarda üstteki kalır. Gösterim eklentiyle gelen e-Plan SLD kütüphanesinden (UİP/NİP/ÇDP), karşılığı olmayan katmanlarda dosyanın kendi renklerinden alınır. CRS dosyadan otomatik. Netcad ilgili firmanın tescilli markasıdır; eklenti Netcad yazılımı ya da dosyası içermez.
+version=0.3.5
+author=Erdoğan Arslan
+email=cacalar0635@gmail.com
+tracker=https://github.com/cacabey2/planEa2qgis/issues
+repository=https://github.com/cacabey2/planEa2qgis
+homepage=https://github.com/cacabey2/planEa2qgis
+category=Vector
+tags=ncz,imar planı,e-plan,mekansal planlar,netcad,turkey,cad
+icon=icon.png
+experimental=True
+changelog=
+    0.3.5 - NIP (1/25000) cizgi sembolleri Netcad boyunda; dosyanin kendi cizgi tipi adlarindan (ONL_ALN, GECEKN, ILCE...) e-Plan eslesmesi; endustriyel gelisme bolgesi siniri; PLANSEMBOL plan sembolleri (T1, T3, TICK, BHA, IA...) kendi cizimimizle; plan sembolu olan dosyada alan ortasi glifleri kapali; cok parcali yollarda sembol seviyeleri; aktarimdan sonra plan onama sinirina yakinlastirma; cizim olcegi listeden secilir ya da elle yazilir.
+    0.3.4 - Onlemli alan dolgusuz ucgenli cizgi; PL sembol nesneleri katman glifiyle; desen cizgileri ince kalemle; kalem kalinliklari sabit mm.
+    0.3.3 - Yazi katmanlarinda etiket; QGIS surum uyumlulugu.
+    0.3.2 - Akilli nesne (yapilasma, SM_YOL) etiketleri ve ozellikleri.
+    0.3.0 - planEa2qgis adiyla yeniden yazim: saf Python NCZ okuyucu, dogru alan/ic alan taramasi, e-Plan SLD gosterimi; Netcad dosyasi icermez.
+deprecated=False
+hasProcessingProvider=no
+server=False
