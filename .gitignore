@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+.vscode/
+.idea/
+*.log
+Thumbs.db
+*.gpkg
+cikti/
+*_karsilastirma.png
+*.bat

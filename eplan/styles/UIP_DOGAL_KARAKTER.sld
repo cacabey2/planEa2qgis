@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StyledLayerDescriptor version="1.0.0" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<NamedLayer>
+		<Name>UIP_DOGAL_KARAKTER</Name>
+		<UserStyle>
+			<Title>UIP_DOGAL_KARAKTER</Title>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name>0</Name>
+					<Title>AGACLIK</Title>
+					<MaxScaleDenominator>75000</MaxScaleDenominator>
+					<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>dogal_karakter_tip</ogc:PropertyName>
+							<ogc:Literal>0</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<GraphicFill>
+								<Graphic>
+									<ExternalGraphic>
+										<OnlineResource xlink:type="simple" xlink:href="http://localhost/TaramaResim/259cae33-4c8d-4bdf-88f0-4df5a4c583b4.png" />
+										<Format>image/png</Format>
+									</ExternalGraphic>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name>0</Name>
+					<Title>KAYALIK_TASLIK</Title>
+					<MaxScaleDenominator>75000</MaxScaleDenominator>
+					<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>dogal_karakter_tip</ogc:PropertyName>
+							<ogc:Literal>1</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<GraphicFill>
+								<Graphic>
+									<ExternalGraphic>
+										<OnlineResource xlink:type="simple" xlink:href="http://localhost/TaramaResim/50852e2c-ee88-43a0-a7e3-232aa7a23275.png" />
+										<Format>image/png</Format>
+									</ExternalGraphic>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name>0</Name>
+					<Title>CALILIK</Title>
+					<MaxScaleDenominator>75000</MaxScaleDenominator>
+					<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>dogal_karakter_tip</ogc:PropertyName>
+							<ogc:Literal>2</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<GraphicFill>
+								<Graphic>
+									<ExternalGraphic>
+										<OnlineResource xlink:type="simple" xlink:href="http://localhost/TaramaResim/1eab7210-5395-4fbc-b975-05f8ccf72bac.png" />
+										<Format>image/png</Format>
+									</ExternalGraphic>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name>0</Name>
+					<Title>KUMUL</Title>
+					<MaxScaleDenominator>75000</MaxScaleDenominator>
+					<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>dogal_karakter_tip</ogc:PropertyName>
+							<ogc:Literal>3</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<GraphicFill>
+								<Graphic>
+									<ExternalGraphic>
+										<OnlineResource xlink:type="simple" xlink:href="http://localhost/TaramaResim/d7779617-55db-49e0-a795-38508c0f5d24.png" />
+										<Format>image/png</Format>
+									</ExternalGraphic>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name>0</Name>
+					<Title>MAKILIK_FUNDALIK</Title>
+					<MaxScaleDenominator>75000</MaxScaleDenominator>
+					<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>dogal_karakter_tip</ogc:PropertyName>
+							<ogc:Literal>4</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<GraphicFill>
+								<Graphic>
+									<ExternalGraphic>
+										<OnlineResource xlink:type="simple" xlink:href="http://localhost/TaramaResim/5cc43a87-9518-43dc-980b-5bc6da4776f1.png" />
+										<Format>image/png</Format>
+									</ExternalGraphic>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name>0</Name>
+					<Title>SAZLIK_BATAKLIK</Title>
+					<MaxScaleDenominator>75000</MaxScaleDenominator>
+					<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>dogal_karakter_tip</ogc:PropertyName>
+							<ogc:Literal>5</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<GraphicFill>
+								<Graphic>
+									<ExternalGraphic>
+										<OnlineResource xlink:type="simple" xlink:href="http://localhost/TaramaResim/b22a5d2a-d945-4b21-9ea5-ad7180b50452.png" />
+										<Format>image/png</Format>
+									</ExternalGraphic>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name>0</Name>
+					<Title>DIGER</Title>
+					<MaxScaleDenominator>75000</MaxScaleDenominator>
+					<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>dogal_karakter_tip</ogc:PropertyName>
+							<ogc:Literal>6</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<GraphicFill>
+								<Graphic>
+									<ExternalGraphic>
+										<OnlineResource xlink:type="simple" xlink:href="http://localhost/TaramaResim/46cf22f0-4f26-4d41-9a39-fc4dfc46cd58.png" />
+										<Format>image/png</Format>
+									</ExternalGraphic>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>
