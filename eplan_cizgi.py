@@ -24,7 +24,7 @@ olcekle uygulanir.
 """
 import os
 import re
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec B405 - yalniz eklentiyle gelen SLD
 
 STIL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "eplan", "styles")
 
@@ -262,12 +262,12 @@ def font_isareti(font, kod, boy_m, renk, birim=None):
     try:
         fm.setStrokeWidth(0)
         fm.setStrokeColor(_qc(renk, 0))
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
     fm.setSizeUnit(birim)
     try:
         fm.setStrokeWidthUnit(birim)
-    except Exception:  # noqa
+    except Exception:  # noqa  # nosec B110 - istege bagli QGIS ayari
         pass
     # QGIS harfi ilerlemenin ortasina, taban cizgisi noktanin ascent/2 altinda olacak sekilde
     # cizer. Kutu merkezini noktaya getirmek icin kaydir:
@@ -378,7 +378,7 @@ def cizgi_katmanlari(kaynak, baslik, olcek):
             ms.appendSymbolLayer(fm)
             try:
                 ms.setSizeUnit(harita)          # alt sembol de olcekli metre (mm degil)
-            except Exception:  # noqa
+            except Exception:  # noqa  # nosec B110 - istege bagli QGIS ayari
                 pass
             ml = QgsMarkerLineSymbolLayer()
             try:

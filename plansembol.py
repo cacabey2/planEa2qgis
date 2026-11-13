@@ -127,7 +127,7 @@ def uygula(lyr):
     r = QgsCategorizedSymbolRenderer("sembol_no", kat)
     try:
         r.setSourceSymbol(sembol(None, sc))
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
     lyr.setRenderer(r)
     return True

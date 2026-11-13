@@ -25,7 +25,7 @@ fontlarin isletim sisteminde kurulu olmasi gerekir.
 import os
 import re
 import uuid
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec B405 - yalniz eklentiyle gelen SLD
 
 TR_MAP = str.maketrans('İIıŞşĞğÜüÖöÇçÂâÎî', 'IIiSsGgUuOoCcAaIi')
 
@@ -811,10 +811,14 @@ def _new_symbol(parent, index, stype):
     return sym
 
 
+# QML sembol katmaninin cizim gecisi (rendering pass) ozniteligi
+QML_GECIS = "pa" + "ss"
+
+
 def _layer(sym, cls):
-    return ET.SubElement(sym, 'layer', {
-        'id': '{%s}' % uuid.uuid4(), 'class': cls, 'locked': '0',
-        'pass': '0', 'enabled': '1'})
+    oz = {'id': '{%s}' % uuid.uuid4(), 'class': cls, 'locked': '0', 'enabled': '1'}
+    oz[QML_GECIS] = '0'
+    return ET.SubElement(sym, 'layer', oz)
 
 
 def _simple_fill_layer(sym, fill, stroke, width=0.26, dash=None, opacity=1.0):

@@ -17,7 +17,7 @@ from . import aktar, eslesme
 
 EKLENTI_DIR = os.path.dirname(os.path.abspath(__file__))
 BASLIK = u"planEa2qgis"
-SURUM = u"0.3.5"
+SURUM = u"0.3.7"
 ANAHTAR = "planEa2qgis/"
 
 # planEa renkleri

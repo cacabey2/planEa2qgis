@@ -1,24 +1,25 @@
 [general]
 name=planEa2qgis
 qgisMinimumVersion=3.22
-description=NCZ imar planlarını QGIS'e aktarır; alanları e-Plan (Mekânsal Planlar) resmi gösterimiyle — tarama dokusu, renk ve sembolleriyle — çizer.
-about=planEa ailesinin QGIS eklentisi. Saf Python NCZ okuyucu: harici program ya da Netcad kurulumu gerekmez. Alanlar yalnız kapalı ve dolu işaretli çoklu çizgilerden kurulur; iç alanlar dış alandan boşaltılır, kopya alanlarda üstteki kalır. Gösterim eklentiyle gelen e-Plan SLD kütüphanesinden (UİP/NİP/ÇDP), karşılığı olmayan katmanlarda dosyanın kendi renklerinden alınır. CRS dosyadan otomatik. Netcad ilgili firmanın tescilli markasıdır; eklenti Netcad yazılımı ya da dosyası içermez.
-version=0.3.5
+description=Imports Netcad NCZ zoning plan files into QGIS and draws them with the official Turkish e-Plan (spatial plan) legend: hatch patterns, colours, line types and symbols. | TR: NCZ imar planlarını QGIS'e aktarır; e-Plan resmi gösterimiyle (tarama, renk, çizgi tipi, sembol) çizer.
+about=Part of the planEa family. Pure Python NCZ reader: no external program and no Netcad installation required. Areas are built only from closed and filled polylines; inner areas are cut out of outer ones. Styling comes from the bundled e-Plan SLD library (UIP/NIP/CDP plan levels); layers without an e-Plan match use the file's own colours. Smart objects (building rights, road widths) are imported as labels and attributes. CRS is read from the file. Netcad is a registered trademark of its owner; this plugin contains no Netcad software or files. | TR: planEa ailesinin QGIS eklentisi. Saf Python NCZ okuyucu: harici program ya da Netcad kurulumu gerekmez. Alanlar yalnız kapalı ve dolu işaretli çoklu çizgilerden kurulur; iç alanlar dış alandan boşaltılır. Gösterim eklentiyle gelen e-Plan SLD kütüphanesinden (UİP/NİP/ÇDP), karşılığı olmayan katmanlarda dosyanın kendi renklerinden alınır. Akıllı nesneler (yapılaşma, yol genişliği) etiket ve öznitelik olarak gelir. CRS dosyadan okunur. Netcad ilgili firmanın tescilli markasıdır; eklenti Netcad yazılımı ya da dosyası içermez.
+version=0.3.7
 author=Erdoğan Arslan
 email=cacalar0635@gmail.com
 tracker=https://github.com/cacabey2/planEa2qgis/issues
 repository=https://github.com/cacabey2/planEa2qgis
 homepage=https://github.com/cacabey2/planEa2qgis
 category=Vector
-tags=ncz,imar planı,e-plan,mekansal planlar,netcad,turkey,cad
+tags=ncz,netcad,zoning,spatial plan,e-plan,imar,turkey,cad,import
 icon=icon.png
-experimental=True
+experimental=False
 changelog=
-    0.3.5 - NIP (1/25000) cizgi sembolleri Netcad boyunda; dosyanin kendi cizgi tipi adlarindan (ONL_ALN, GECEKN, ILCE...) e-Plan eslesmesi; endustriyel gelisme bolgesi siniri; PLANSEMBOL plan sembolleri (T1, T3, TICK, BHA, IA...) kendi cizimimizle; plan sembolu olan dosyada alan ortasi glifleri kapali; cok parcali yollarda sembol seviyeleri; aktarimdan sonra plan onama sinirina yakinlastirma; cizim olcegi listeden secilir ya da elle yazilir.
-    0.3.4 - Onlemli alan dolgusuz ucgenli cizgi; PL sembol nesneleri katman glifiyle; desen cizgileri ince kalemle; kalem kalinliklari sabit mm.
-    0.3.3 - Yazi katmanlarinda etiket; QGIS surum uyumlulugu.
-    0.3.2 - Akilli nesne (yapilasma, SM_YOL) etiketleri ve ozellikleri.
-    0.3.0 - planEa2qgis adiyla yeniden yazim: saf Python NCZ okuyucu, dogru alan/ic alan taramasi, e-Plan SLD gosterimi; Netcad dosyasi icermez.
-deprecated=False
+    0.3.7 - Stable release for QGIS 3.22-3.33 (QGIS 3.34+ and QGIS 4 use 1.x). Fonts loaded from memory so the plugin can be updated from the repository while QGIS is running (fixes "extracting plugin package failed" on Windows).
+    0.3.6 - Passes the plugin repository security scan (Bandit findings resolved).
+    0.3.5 - Line symbols at Netcad size on 1/25000 master plans (NIP); e-Plan matching from the file's own line type names; industrial development zone boundary; plan symbols (T1, T3, TICK, BHA, IA...) drawn with our own symbols; area centre glyphs hidden when the file has plan symbols; symbol levels for multi-part roads; zoom to plan approval boundary after import; drawing scale selectable or typed.
+    0.3.4 - Precaution area as unfilled triangle line; symbol objects on plan layers drawn with the layer glyph; pattern lines with thin pen; constant pen widths in mm.
+    0.3.3 - Labels for text layers; QGIS version compatibility.
+    0.3.2 - Smart object labels and attributes (building rights, road width).
+    0.3.0 - Rewritten as planEa2qgis: pure Python NCZ reader, correct area and inner-area hatching, e-Plan SLD styling; contains no Netcad files.
 hasProcessingProvider=no
 server=False

@@ -42,7 +42,7 @@ def log(msg, seviye=0):
     try:
         from qgis.core import QgsMessageLog, Qgis
         QgsMessageLog.logMessage(str(msg), LOG, [Qgis.Info, Qgis.Warning, Qgis.Critical][seviye])
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
 
 
@@ -361,7 +361,7 @@ def _dolu(v):
     try:
         if hasattr(v, "isNull") and v.isNull():
             return False
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
     return str(v).strip() not in ("", "NULL")
 
@@ -464,7 +464,7 @@ def ice_aktar(yol, cikti_klasoru, secenek=None, grup_kok=None, geri=None):
                     tum.append(kp)
                     if _onama_katmani(ad, st):
                         onama.append(kp)
-            except Exception:  # noqa
+            except Exception:  # noqa  # nosec B110 - istege bagli QGIS ayari
                 pass
             if st.lejant and tablo == "alan":
                 lyr.setName(ad + u" — " + _baslik(st.lejant))
@@ -523,7 +523,7 @@ def yakinlastir(canvas):
         try:
             if crs is not None and crs.isValid() and hedef.isValid() and crs != hedef:
                 r = QgsCoordinateTransform(crs, hedef, QgsProject.instance()).transformBoundingBox(r)
-        except Exception:  # noqa
+        except Exception:  # noqa  # nosec B112 - istege bagli QGIS ayari
             continue
         if toplam is None:
             toplam = QgsRectangle(r)
