@@ -28,11 +28,8 @@ def _kare(boy, ofset=(0.0, 0.0), dolu=False):
     from qgis.core import QgsSimpleMarkerSymbolLayer, QgsUnitTypes
     from qgis.PyQt.QtCore import QPointF
     from qgis.PyQt.QtGui import QColor
-    try:
-        from qgis.core import Qgis
-        sekil = Qgis.MarkerShape.Square
-    except Exception:
-        sekil = QgsSimpleMarkerSymbolLayer.Square
+    from qgis.core import Qgis
+    sekil = Qgis.MarkerShape.Square
     sl = QgsSimpleMarkerSymbolLayer(sekil, boy)
     sl.setSizeUnit(Qgis.RenderUnit.MetersInMapUnits)
     sl.setColor(QColor(255, 255, 255, 255 if dolu else 0))
@@ -48,11 +45,8 @@ def _kare(boy, ofset=(0.0, 0.0), dolu=False):
 def _ucgen(boy):
     from qgis.core import QgsSimpleMarkerSymbolLayer, QgsUnitTypes
     from qgis.PyQt.QtGui import QColor
-    try:
-        from qgis.core import Qgis
-        sekil = Qgis.MarkerShape.Triangle
-    except Exception:
-        sekil = QgsSimpleMarkerSymbolLayer.Triangle
+    from qgis.core import Qgis
+    sekil = Qgis.MarkerShape.Triangle
     sl = QgsSimpleMarkerSymbolLayer(sekil, boy)
     sl.setSizeUnit(Qgis.RenderUnit.MetersInMapUnits)
     sl.setColor(QColor(0, 0, 0, 0))
@@ -128,7 +122,7 @@ def uygula(lyr):
     r = QgsCategorizedSymbolRenderer("sembol_no", kat)
     try:
         r.setSourceSymbol(sembol(None, sc))
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
     lyr.setRenderer(r)
     return True

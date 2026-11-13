@@ -12,16 +12,15 @@ from qgis.PyQt.QtWidgets import (QAbstractItemView, QApplication, QCheckBox,
                                  QSpinBox, QStyledItemDelegate, QToolButton, QVBoxLayout,
                                  QWidget)
 from qgis.core import Qgis, QgsSettings
-try:                                   # Qt6: QAction QtGui'de
-    from qgis.PyQt.QtGui import QAction
-except ImportError:                    # Qt5
-    from qgis.PyQt.QtWidgets import QAction
+from qgis.PyQt import QtGui as _QtGui, QtWidgets as _QtWidgets
+# QAction Qt6'da QtGui'de, Qt5'te QtWidgets'ta
+QAction = getattr(_QtGui, "QAction", None) or getattr(_QtWidgets, "QAction")
 
 from . import aktar, eslesme
 
 EKLENTI_DIR = os.path.dirname(os.path.abspath(__file__))
 BASLIK = u"planEa2qgis"
-SURUM = u"0.4.0"
+SURUM = u"1.0.0"
 ANAHTAR = "planEa2qgis/"
 
 # planEa renkleri

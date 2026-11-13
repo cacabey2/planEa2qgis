@@ -24,7 +24,7 @@ olcekle uygulanir.
 """
 import os
 import re
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec B405 - yalniz eklentiyle gelen SLD
 from qgis.core import Qgis  # Qt6/QGIS 4: Qgis.RenderUnit
 
 STIL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "eplan", "styles")
@@ -158,7 +158,7 @@ def _glif_olcu(font, kod):
     p.addText(QPointF(0, 0), f, chr(kod))
     b = p.boundingRect()
     fm = QFontMetricsF(f)
-    adv = fm.horizontalAdvance(chr(kod)) if hasattr(fm, "horizontalAdvance") else fm.width(chr(kod))
+    adv = fm.horizontalAdvance(chr(kod))
     if b.width() <= 0 or b.height() <= 0:
         r = (1.0, 1.0, 0.5, -0.5, 1.0, fm.ascent() / 100.0)
     else:
@@ -263,12 +263,12 @@ def font_isareti(font, kod, boy_m, renk, birim=None):
     try:
         fm.setStrokeWidth(0)
         fm.setStrokeColor(_qc(renk, 0))
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
     fm.setSizeUnit(birim)
     try:
         fm.setStrokeWidthUnit(birim)
-    except Exception:  # noqa
+    except Exception:  # noqa  # nosec B110 - istege bagli QGIS ayari
         pass
     # QGIS harfi ilerlemenin ortasina, taban cizgisi noktanin ascent/2 altinda olacak sekilde
     # cizer. Kutu merkezini noktaya getirmek icin kaydir:
@@ -303,10 +303,7 @@ def _ozel_cizgi(ad, fak):
         return []
     cap, ara, per = (v * fak for v in tanim)
     harita = Qgis.RenderUnit.MetersInMapUnits
-    try:
-        sekil = Qgis.MarkerShape.Circle
-    except Exception:
-        sekil = QgsSimpleMarkerSymbolLayer.Circle
+    sekil = Qgis.MarkerShape.Circle
     ms = QgsMarkerSymbol()
     ms.deleteSymbolLayer(0)
     for dx in (-ara / 2.0, ara / 2.0):
@@ -318,10 +315,7 @@ def _ozel_cizgi(ad, fak):
         d.setOffsetUnit(harita)
         ms.appendSymbolLayer(d)
     ml = QgsMarkerLineSymbolLayer()
-    try:
-        ml.setPlacements(Qgis.MarkerLinePlacement.Interval)
-    except Exception:
-        ml.setPlacement(QgsMarkerLineSymbolLayer.Interval)
+    ml.setPlacements(Qgis.MarkerLinePlacement.Interval)
     ml.setInterval(per)
     ml.setIntervalUnit(harita)
     ml.setOffsetAlongLine(per / 2.0)
@@ -379,13 +373,10 @@ def cizgi_katmanlari(kaynak, baslik, olcek):
             ms.appendSymbolLayer(fm)
             try:
                 ms.setSizeUnit(harita)          # alt sembol de olcekli metre (mm degil)
-            except Exception:  # noqa
+            except Exception:  # noqa  # nosec B110 - istege bagli QGIS ayari
                 pass
             ml = QgsMarkerLineSymbolLayer()
-            try:
-                ml.setPlacements(Qgis.MarkerLinePlacement.Interval)
-            except Exception:
-                ml.setPlacement(QgsMarkerLineSymbolLayer.Interval)
+            ml.setPlacements(Qgis.MarkerLinePlacement.Interval)
             ml.setInterval(max(aralik, 0.05))
             ml.setIntervalUnit(harita)
             ml.setOffsetAlongLine(kayma + (t["desen_kayma"] or 0) * fak)

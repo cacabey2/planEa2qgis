@@ -44,7 +44,7 @@ def log(msg, seviye=0):
     try:
         from qgis.core import QgsMessageLog, Qgis
         QgsMessageLog.logMessage(str(msg), LOG, [Qgis.MessageLevel.Info, Qgis.MessageLevel.Warning, Qgis.MessageLevel.Critical][seviye])
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
 
 
@@ -363,7 +363,7 @@ def _dolu(v):
     try:
         if hasattr(v, "isNull") and v.isNull():
             return False
-    except Exception:
+    except Exception:  # nosec B110 - istege bagli QGIS ayari
         pass
     return str(v).strip() not in ("", "NULL")
 
@@ -407,9 +407,11 @@ def _alan(ad, tip):
     try:
         return QgsField(ad, tip)
     except TypeError:
-        from qgis.PyQt.QtCore import QVariant, QMetaType
-        eski = {QMetaType.Type.Int: QVariant.Int, QMetaType.Type.Double: QVariant.Double}
-        return QgsField(ad, eski.get(tip, QVariant.String))
+        from qgis.PyQt import QtCore
+        qv = getattr(QtCore, "QVariant")           # yalniz QGIS < 3.38 (Qt5)
+        eski = {QtCore.QMetaType.Type.Int: getattr(qv, "Int"),
+                QtCore.QMetaType.Type.Double: getattr(qv, "Double")}
+        return QgsField(ad, eski.get(tip, getattr(qv, "String")))
 
 
 # --------------------------------------------------------------------------- ana is
@@ -477,7 +479,7 @@ def ice_aktar(yol, cikti_klasoru, secenek=None, grup_kok=None, geri=None):
                     tum.append(kp)
                     if _onama_katmani(ad, st):
                         onama.append(kp)
-            except Exception:  # noqa
+            except Exception:  # noqa  # nosec B110 - istege bagli QGIS ayari
                 pass
             if st.lejant and tablo == "alan":
                 lyr.setName(ad + u" — " + _baslik(st.lejant))
@@ -536,7 +538,7 @@ def yakinlastir(canvas):
         try:
             if crs is not None and crs.isValid() and hedef.isValid() and crs != hedef:
                 r = QgsCoordinateTransform(crs, hedef, QgsProject.instance()).transformBoundingBox(r)
-        except Exception:  # noqa
+        except Exception:  # noqa  # nosec B112 - istege bagli QGIS ayari
             continue
         if toplam is None:
             toplam = QgsRectangle(r)
@@ -784,20 +786,13 @@ def _guvenli(fn):
 
 def _yer_ustu():
     from qgis.core import QgsPalLayerSettings
-    try:
-        from qgis.core import Qgis
-        return Qgis.LabelPlacement.OverPoint
-    except Exception:
-        return QgsPalLayerSettings.OverPoint
+    from qgis.core import Qgis
+    return Qgis.LabelPlacement.OverPoint
 
 
 def _cok_satir_orta():
-    try:
-        from qgis.core import Qgis
-        return Qgis.LabelMultiLineAlignment.Center
-    except Exception:
-        from qgis.core import QgsPalLayerSettings
-        return QgsPalLayerSettings.MultiCenter
+    from qgis.core import Qgis
+    return Qgis.LabelMultiLineAlignment.Center
 
 
 def _sembol_ozellik(ad):

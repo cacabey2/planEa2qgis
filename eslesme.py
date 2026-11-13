@@ -139,13 +139,21 @@ def fontlari_yukle():
         return
     _fontlar[0] = True
     try:
+        from qgis.PyQt.QtCore import QByteArray
         from qgis.PyQt.QtGui import QFontDatabase
     except ImportError:
         return
     d = os.path.join(KUTUPHANE, "fonts")
     for f in sorted(os.listdir(d)) if os.path.isdir(d) else []:
         if f.lower().endswith((".ttf", ".otf")):
-            QFontDatabase.addApplicationFont(os.path.join(d, f))
+            # dosya yolundan degil bellekten: Windows yuklu font dosyasini kilitler ve
+            # eklenti guncellenirken uzerine yazilamaz ("paketi cikartma basarisiz")
+            try:
+                with open(os.path.join(d, f), "rb") as fh:
+                    veri = fh.read()
+                QFontDatabase.addApplicationFontFromData(QByteArray(veri))
+            except Exception:  # nosec B112 - okunamayan font atlanir
+                continue
     try:
         E.AVAILABLE_FONTS = set(QFontDatabase().families())
     except Exception:
